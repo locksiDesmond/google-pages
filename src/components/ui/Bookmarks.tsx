@@ -5,7 +5,7 @@ import { BookmarkContext } from './../../context/BookmarkContext';
 import { Data } from './OptionMenu';
 const BookMarkContainer = styled.div`
   display: grid;
-  margin-top: 2rem;
+  margin-top: 6rem;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
   row-gap: 0.1rem;

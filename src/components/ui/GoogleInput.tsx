@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Input } from '../../styles/styles';
+import MicIcon from '@material-ui/icons/Mic';
+import SearchIcon from '@material-ui/icons/Search';
 interface GoogleInputProps {
   open: boolean;
 }
@@ -11,6 +13,9 @@ const GoogleInputWrapper = styled.div<GoogleInputProps>`
   display: flex;
   border: 1px solid #eee;
   align-items: flex-start;
+  position: absolute;
+  width: 45vw;
+  z-index: 3;
   ${(props) =>
     props.open
       ? css`
@@ -28,7 +33,7 @@ const GoogleInputWrapper = styled.div<GoogleInputProps>`
           transition-timing-function: linear;
         `};
 `;
-const GoogleInputContainer = styled.div`
+const GoogleInputContainer = styled.form`
   width: -webkit-fill-available;
   width: -moz-available;
   display: flex;
@@ -39,16 +44,25 @@ const GoogleInputContainer = styled.div`
 `;
 const GoogleInput = () => {
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState('');
+  const handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void = (
+    e
+  ) => {
+    e.preventDefault();
+    window.open(`http://google.com/search?q=${value}`);
+  };
   return (
     <GoogleInputWrapper open={open}>
-      <GoogleInputContainer>
-        <span>S</span>
+      <GoogleInputContainer onSubmit={handleSubmit}>
+        <SearchIcon />
         <Input
           placeholder="Search Google or type a URL"
+          value={value}
+          onChange={(e) => setValue(e.currentTarget.value)}
           onFocus={() => setOpen(true)}
           onBlur={() => setOpen(false)}
         />
-        <span>I</span>
+        <MicIcon />
       </GoogleInputContainer>
     </GoogleInputWrapper>
   );

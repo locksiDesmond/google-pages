@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Flex } from '../../styles/styles';
 import AddBookmarkDialog from './AddBookmarkDialog';
+import AddIcon from '@material-ui/icons/Add';
 
 export interface BookmarkProps extends Data {
   index: number;
@@ -85,8 +86,7 @@ const BookmarkedCard: React.FC<BookmarkProps> = ({ name, url, index }) => {
               src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${url}`}
               alt={name || 'website'}
             />
-          )) ||
-            'i'}
+          )) || <AddIcon />}
         </IconWrapper>
         {name && (
           <IconButton
