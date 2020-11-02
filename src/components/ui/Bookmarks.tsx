@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import BookmarkedCard, { Props } from './BookmarkedCard';
-
+import BookmarkedCard from './BookmarkedCard';
+import { BookmarkContext } from './../../context/BookmarkContext';
+import { Data } from './OptionMenu';
 const BookMarkContainer = styled.div`
   display: grid;
   margin-top: 2rem;
@@ -10,21 +11,14 @@ const BookMarkContainer = styled.div`
   row-gap: 0.1rem;
   flex-direction: column;
 `;
-const items: Array<Props> = [
-  { title: 'react App' },
-  { title: 'whatsapp' },
-  { title: 'Inbox' },
-  { title: 'Github' },
-  { title: 'Youtube' },
-  { title: 'Behance' },
-  { title: 'Youtube' },
-];
-const array: Array<Props> = Array(10 - items.length).fill({ title: null });
 const Bookmarks = () => {
+  const { bookmarks: items } = useContext(BookmarkContext);
+  const array: Array<Data> = Array(10 - items.length).fill({ name: null });
+
   return (
     <BookMarkContainer>
       {[...items, ...array].map((_, i) => (
-        <BookmarkedCard title={_.title} />
+        <BookmarkedCard name={_.name} url={_.url} key={i} index={i} />
       ))}
     </BookMarkContainer>
   );

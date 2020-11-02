@@ -23,3 +23,6 @@ export const SearchAndBookmarks = styled.div`
   width: 40vw;
   height: 45vh;
 `;
+export const Flex = styled.div`
+  display: flex;
+`;
