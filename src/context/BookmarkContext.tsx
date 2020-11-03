@@ -12,16 +12,7 @@ export const BookmarkContext = createContext<BookmarkContextProps>({
   updateBookmark: () => null,
   addBookmark: () => null,
 });
-let stores = [
-  { name: 'react App', url: '' },
-  { name: 'whatsapp', url: '' },
-  { name: 'Inbox', url: '' },
-  { name: 'Github', url: '' },
-  { name: 'Youtube', url: '' },
-  { name: 'Behance', url: '' },
-  { name: 'Youtube', url: '' },
-  { name: 'vuibu', url: 'https://viubi.com/demo/executive-summary/' },
-];
+let stores = [{ name: 'locksi pages', url: 'https://locksipage.netlify.app/' }];
 const BookmarkContextWrapper: React.FC<{ children: JSX.Element }> = ({
   children,
 }) => {

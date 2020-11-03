@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Redirect, useHistory } from 'react-router-dom';
 import { Button } from './../components/ui/AddBookmarkDialog';
+import CodeIcon from '@material-ui/icons/Code';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
 interface TextProps {
@@ -25,6 +26,12 @@ const Text = styled.p<TextProps>`
   font-weight: ${(props) => props.big && 'bold'};
   color: ${(props) => (props.diff ? 'blue' : '#000')};
   margin: 1rem 0;
+  align-items: center;
+  display: flex;
+`;
+const Span = styled.span`
+  color: blue;
+  font-weight: 600;
 `;
 
 const NoInternet = () => {
@@ -48,12 +55,21 @@ const NoInternet = () => {
         <ErrorOutlineIcon />
         <Text big>This site can't be reached</Text>
         <Text>
-          <span>locksi.com</span>'s server can't be reached
+          <Span>locksipage.netlify.app</Span>'s server can't be reached
         </Text>
+        <Text>Try:</Text>
+        <ul>
+          <li>Checking the connection</li>
+          <li>Checking the proxy and the firewall Running</li>
+          <li>Windows Network Diagnostics</li>
+        </ul>
+
         <Text diff>
-          Try pressing <span>s</span>
+          Try pressing<span style={{ marginLeft: '.5rem' }}> s</span>
         </Text>
-        <Text>Locksi</Text>
+        <Text>
+          Locksi <CodeIcon />
+        </Text>
         <Button
           onClick={() => history.push('/')}
           margin="3rem 0 0 0"
@@ -67,8 +83,3 @@ const NoInternet = () => {
 };
 
 export default NoInternet;
-// Try:
-
-// Checking the connection
-// Checking the proxy and the firewall
-// Running Windows Network Diagnostics

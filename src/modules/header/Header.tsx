@@ -23,7 +23,6 @@ const NavItem = styled.li`
   cursor: pointer;
 `;
 const Header = () => {
-  // https://www.google.com.ng/intl/en/about/products?tab=rh
   return (
     <Nav>
       <NavItemWrapper>
