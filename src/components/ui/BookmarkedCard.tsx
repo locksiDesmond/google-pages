@@ -60,6 +60,7 @@ const BookmarkedCard: React.FC<BookmarkProps> = ({ name, url, index }) => {
   const handleClick:
     | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
     | undefined = (event) => {
+    event.stopPropagation();
     setAnchorEl(event.currentTarget);
   };
   const [value, setValue] = useState<Data>({ name, url });
