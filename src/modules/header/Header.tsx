@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import AppsIcon from '@material-ui/icons/Apps';
 
 const Nav = styled.nav`
   display: flex;
@@ -19,13 +20,18 @@ const NavItemWrapper = styled.ul`
 const NavItem = styled.li`
   font-size: ;
   text-transform: capitalize;
+  cursor: pointer;
 `;
 const Header = () => {
+  // https://www.google.com.ng/intl/en/about/products?tab=rh
   return (
     <Nav>
       <NavItemWrapper>
         <NavItem>Google</NavItem>
         <NavItem>Images</NavItem>
+        <NavItem>
+          <AppsIcon />
+        </NavItem>
       </NavItemWrapper>
     </Nav>
   );

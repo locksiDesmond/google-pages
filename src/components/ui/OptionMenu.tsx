@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { BookmarkContext } from './../../context/BookmarkContext';
 
 export interface Data {
-  name: string | undefined | null;
-  url: string | undefined | null;
+  name: string | undefined;
+  url: string | undefined;
 }
 export interface Props {
   open: boolean;

@@ -49,6 +49,10 @@ const Title = styled.div`
   white-space: nowrap;
   text-transform: capitalize;
 `;
+const BookmarkImage = styled.img`
+  height: 1.2rem;
+  width: 1.2rem;
+`;
 const BookmarkedCard: React.FC<BookmarkProps> = ({ name, url, index }) => {
   const [anchorEl, setAnchorEl] = useState<any>(null);
   const open = Boolean(anchorEl);
@@ -71,10 +75,14 @@ const BookmarkedCard: React.FC<BookmarkProps> = ({ name, url, index }) => {
     } else {
       setType('update');
     }
-  }, [name]);
+    setValue({ name, url });
+  }, [name, url]);
   const handleAddBookmark = () => {
     if (type === 'new' && !openDialog) {
       setOpenDialog(true);
+    }
+    if (type === 'update' && !openDialog && url && !open) {
+      window.open(url);
     }
   };
   return (
@@ -82,7 +90,7 @@ const BookmarkedCard: React.FC<BookmarkProps> = ({ name, url, index }) => {
       <Flex>
         <IconWrapper>
           {(url && (
-            <img
+            <BookmarkImage
               src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${url}`}
               alt={name || 'website'}
             />

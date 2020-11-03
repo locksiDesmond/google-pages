@@ -4,6 +4,7 @@ import { GlobalStyle } from './../styles/GlobalStyle';
 import { SearchAndBookmarks, BodyWrapper, BigText } from './../styles/styles';
 import GoogleInput from '../components/ui/GoogleInput';
 import Bookmarks from '../components/ui/Bookmarks';
+import { Link } from 'react-router-dom';
 
 const GoogleLayout = () => {
   return (
@@ -11,7 +12,9 @@ const GoogleLayout = () => {
       <GlobalStyle />
       <Header />
       <BodyWrapper>
-        <BigText>Google</BigText>
+        <BigText>
+          <Link to="/">Google</Link>
+        </BigText>
         <SearchAndBookmarks>
           <GoogleInput />
           <Bookmarks />

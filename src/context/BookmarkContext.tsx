@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { Data } from './../components/ui/OptionMenu';
 interface BookmarkContextProps {
   bookmarks: Array<Data>;
@@ -39,6 +39,16 @@ const BookmarkContextWrapper: React.FC<{ children: JSX.Element }> = ({
   const addBookmark: (arg: Data) => void = (args) => {
     setItems([...items, args]);
   };
+  useEffect(() => {
+    const persistedState: any = localStorage.getItem('bookmarks');
+    const parsedState = JSON.parse(persistedState);
+    console.log({ parsedState });
+    setItems(parsedState || stores);
+  }, []);
+  useEffect(() => {
+    localStorage.setItem('bookmarks', JSON.stringify(items));
+  }, [items]);
+
   return (
     <BookmarkContext.Provider
       value={{

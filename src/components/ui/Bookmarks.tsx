@@ -18,7 +18,12 @@ const Bookmarks = () => {
   return (
     <BookMarkContainer>
       {[...items, ...array].map((_, i) => (
-        <BookmarkedCard name={_.name} url={_.url} key={i} index={i} />
+        <BookmarkedCard
+          name={_.name}
+          url={_.url}
+          key={`${i}-${_.name}`}
+          index={i}
+        />
       ))}
     </BookMarkContainer>
   );

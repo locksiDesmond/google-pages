@@ -25,7 +25,7 @@ const BookmarkTitle = styled.h1`
   font-weight: normal;
   text-align: center;
 `;
-const Button = styled.button`
+export const Button = styled.button<{ margin?: string; theme?: 'transparent' }>`
   height: 35px;
   width: 3.8rem;
   border-radius: 4px;
@@ -52,6 +52,11 @@ const Button = styled.button`
             opacity: 0.8;
           }
         `}
+  ${(props) =>
+    props.margin &&
+    css`
+      margin: ${props.margin};
+    `}
 `;
 const AddBookmarkDialog: React.FC<BookmarkProps> = ({
   open,
@@ -80,23 +85,21 @@ const AddBookmarkDialog: React.FC<BookmarkProps> = ({
           {type === 'update' ? 'Edit shortcut' : 'Add shortcut'}
         </BookmarkTitle>
         <TextField
-          id="outlined-textarea"
+          id="outline-area-name"
           label="name"
           value={value.name}
           required
           placeholder="Placeholder"
           name="name"
-          multiline
           variant="outlined"
           onChange={handleChange}
         />
         <TextField
-          id="outlined-textarea"
-          label="Url"
+          id="outlined-area-url"
+          label="url"
           value={value.url}
           required
           placeholder="Placeholder"
-          multiline
           variant="outlined"
           name="url"
           onChange={handleChange}
