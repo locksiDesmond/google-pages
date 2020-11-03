@@ -21,14 +21,24 @@ const NavItem = styled.li`
   font-size: ;
   text-transform: capitalize;
   cursor: pointer;
+  a {
+    color: #000;
+    text-decoration: none;
+  }
 `;
 const Header = () => {
   return (
     <Nav>
       <NavItemWrapper>
-        <NavItem>Google</NavItem>
-        <NavItem>Images</NavItem>
-        <NavItem>
+        <NavItem onClick={() => alert('This is a google homepage website')}>
+          Google
+        </NavItem>
+        <NavItem onClick={() => alert('Locksi forgot to add images')}>
+          Images
+        </NavItem>
+        <NavItem
+          onClick={() => alert("locksi's first typescript app. Excited!!")}
+        >
           <AppsIcon />
         </NavItem>
       </NavItemWrapper>
