@@ -34,8 +34,7 @@ const GoogleInputWrapper = styled.div<GoogleInputProps>`
         `};
 `;
 const GoogleInputContainer = styled.form`
-  width: -webkit-fill-available;
-  width: -moz-available;
+  width: stretch;
   display: flex;
   align-items: center;
   height: 3rem;
@@ -45,12 +44,14 @@ const GoogleInputContainer = styled.form`
 const GoogleInput = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
+
   const handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void = (
     e
   ) => {
     e.preventDefault();
     window.open(`http://google.com/search?q=${value}`);
   };
+
   const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
     event
   ) => {
@@ -67,6 +68,7 @@ const GoogleInput = () => {
     }
     setValue(event.currentTarget.value);
   };
+
   return (
     <GoogleInputWrapper open={open}>
       <GoogleInputContainer onSubmit={handleSubmit}>

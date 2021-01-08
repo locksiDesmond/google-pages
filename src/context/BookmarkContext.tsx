@@ -33,7 +33,6 @@ const BookmarkContextWrapper: React.FC<{ children: JSX.Element }> = ({
   useEffect(() => {
     const persistedState: any = localStorage.getItem('bookmarks');
     const parsedState = JSON.parse(persistedState);
-    console.log({ parsedState });
     setItems(parsedState || stores);
   }, []);
   useEffect(() => {
