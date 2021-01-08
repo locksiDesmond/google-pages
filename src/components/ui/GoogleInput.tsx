@@ -51,6 +51,22 @@ const GoogleInput = () => {
     e.preventDefault();
     window.open(`http://google.com/search?q=${value}`);
   };
+  const handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
+    event
+  ) => {
+    try {
+      window.history.pushState(
+        {
+          search: event.currentTarget.value,
+        },
+        'search',
+        `http://localhost:3000/search/?s=${event.currentTarget.value}`
+      );
+    } catch (err) {
+      console.log({ err });
+    }
+    setValue(event.currentTarget.value);
+  };
   return (
     <GoogleInputWrapper open={open}>
       <GoogleInputContainer onSubmit={handleSubmit}>
@@ -58,7 +74,7 @@ const GoogleInput = () => {
         <Input
           placeholder="Search Google or type a URL"
           value={value}
-          onChange={(e) => setValue(e.currentTarget.value)}
+          onChange={handleChange}
           onFocus={() => setOpen(true)}
           onBlur={() => setOpen(false)}
         />
